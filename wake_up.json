@@ -1,0 +1,29 @@
+{
+    "user_name": "Scott",
+    "temp_scale": "degrees celsius",
+    
+    "intro":[
+        "Let me read some Wikipedia so you can wake up. Here we go.",
+        "Can I get your attention? No? Let me read an article for you then.",
+        "I found an interesting article yesterday. Let me read it while you emerge."
+    ],
+    "outro":[
+        "Do I have your attention now?",
+        "Are you awake yet?",
+        "That's it for today. Now to the interresting stuff!",
+        "What did you think of it? Doesn't matter, I can't hear just yet."
+    ],
+    "salute":[
+        "Hi {0}. What a beautiful day it is today.'",
+        "Oh my god, {0}, A new day ? How incredible is this?",
+        "You're going to have to wake up now, {0}."
+    ],
+    "day":[
+        "Today is {0} and on the planning is {1}. You ready for it?",
+        "It's a new {0}. As usual, you have {1}. Let's do it!"
+    ],
+    "weather":[
+        "It is {0} {1} outside and {2}.",
+        "Today, a {2} landscape as well as {0} {1} await you."
+    ]
+}
