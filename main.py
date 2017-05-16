@@ -8,7 +8,9 @@ def main():
         print('too short')
         page = get_rand_wiki_page()
 
-    toSpeak = 'Page of the day : ' + page['title'] + '. ' + soft_cut_string(page['text'],LENGTH).replace("\n"," ") + " Read more at " + page['url'] +"."
+    toSpeak = 'Page of the day : ' + page['title'] + '. ' + \
+    remove_extra_whitespace(soft_cut_string(page['text'],LENGTH).replace("\n"," ")) + \
+    ' Read more at ' + page['url'] +'.'
 
     print(toSpeak)
 

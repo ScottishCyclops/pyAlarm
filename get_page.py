@@ -10,9 +10,13 @@ def soft_cut_string(string,amount):
     else:
         return string
 
+def remove_extra_whitespace(string):
+    return ' '.join(string.split())
+
 """returns a dict containing a page title, url and all the text from the <p>'s in the page"""
 def get_rand_wiki_page():
-    page = urllib.request.urlopen('http://en.wikipedia.org/wiki/Special:Random')
+    reqUrl = 'http://en.wikipedia.org/wiki/Special:Random'
+    page = urllib.request.urlopen(reqUrl)
     dom = BeautifulSoup(page.read(), 'html.parser')
 
     url = page.geturl()
