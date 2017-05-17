@@ -7,6 +7,8 @@ from utils import *
 LENGTH = 1500
 
 def wake_me_up():
+    startTime = get_date()
+
     """getting article"""
     page = get_rand_wiki_page()
     while len(page['text']) < LENGTH:
@@ -36,3 +38,7 @@ def wake_me_up():
 
     print(text)
     say(text)
+
+    endTime = get_date()
+    totalTime = endTime - startTime
+    print(totalTime)

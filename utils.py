@@ -100,7 +100,7 @@ class Alarm(Thread):
                 time.sleep(1)
 
         except:
-             self.isRunning = False
+            self.isRunning = False
             return
     def stop(self):
         self.isRunning = False
