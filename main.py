@@ -6,20 +6,21 @@ import sys
 
 
 def main():
+    
+    alarm_tot = [6,5]
+    alarm_normal = [6,42]
+    alarm_tard = [7,5]
+    alarm_weekend = [9,30]
+
     alarms = {
-
-        0: set_alarm(0, 21,36),
-        1: set_alarm(1, 21,57),
-        2: set_alarm(2, 9,10),
-        3: set_alarm(3, 9,10),
-        4: set_alarm(4, 9,10),
-        5: set_alarm(5, 9,10),
-        6: set_alarm(6, 9,10),
-        7: set_alarm(7, 16,0),
+        0: set_alarm(0, *alarm_normal),
+        1: set_alarm(1, *alarm_normal),
+        2: set_alarm(2, *alarm_tot),
+        3: set_alarm(3, *alarm_tard),
+        4: set_alarm(4, *alarm_normal),
+        5: set_alarm(5, *alarm_weekend),
+        6: set_alarm(6, *alarm_weekend),
     }
-
-    wake_me_up()
-    sys.exit(0)
 
     alarm = Alarm(alarms,wake_me_up)
     alarm.start()
