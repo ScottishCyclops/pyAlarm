@@ -1,0 +1,22 @@
+[
+    {
+        "name":"weather_report",
+        "intent":"recieve weather information",
+        "key_words":["weather","outside","temperature","degrees", "conditions"],
+        "secondary_words":["like","rain","rainy","sun","sunny","clouds","cloudy","today","tomorrow"],
+        "answers":[
+            "Go look for yourself outside",
+            "Let me check the temperature for you"
+        ]
+    },
+    {
+        "name":"add_agenda",
+        "intent":"add information to the agenda",
+        "key_words":["agenda","event","buy","attend","party","cinema","film","anniversary", "museum", "reception"],
+        "secondary_words":["add","new","remind","do","go"],
+        "answers":[
+            "I will add that entry to your agenda",
+            "I will remind you of that"
+        ]
+    }
+]

@@ -14,7 +14,7 @@ def say_text(text,lang):
     tts.save("say.wav")
     os.system("mplayer say.wav")
 
-text = "yolo"
+text = "what the fuck mate"
 
 print(text)
 
