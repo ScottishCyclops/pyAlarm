@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-from utils import get_json
+from utils import get_json, say
 from random import choice
+
+from os import path
+import sys
+from pocketsphinx import LiveSpeech, get_model_path
 
 DEBUG = True
 KEY_WORDS_VALUE = 2
@@ -43,12 +47,27 @@ def get_intent(phrase,intents):
 
 def main():
     intents = get_json("intent.json")
-    phrase = "AH"
-    while phrase != "stop":
-        #we put everything to lower for comparaisons
-        phrase = input("Phrase: ").lower()
 
-        print(get_intent(phrase,intents))
+
+    model_path = get_model_path()
+    print(model_path)
+
+    speech = LiveSpeech(
+        verbose=False,
+        sampling_rate=16000,
+        buffer_size=2048,
+        no_search=False,
+        full_utt=False,
+        hmm=path.join(model_path, 'en-us'),
+        lm=path.join(model_path, 'en-us.lm.bin'),
+        dic=path.join(model_path, 'cmudict-en-us.dict'),
+        mllr=path.join(model_path,'adapt-230517-2')
+    )
+
+    for phrase in speech:
+        if str(phrase) == "stop":
+            sys.exit(0)
+        say(get_intent(str(phrase).lower(),intents))
 
 if __name__ == "__main__":
     main()

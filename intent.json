@@ -26,7 +26,7 @@
         "intent":"thanks the machine for something",
         "key_words":["thank","thanks","nice","kind","credit","respect","bless","helped","help"],
         "secondary_words":["you","of","many","due","to","great"],
-        "excluded_words":["how","why","who","fuck","stupid","hate"],
+        "excluded_words":["how","why","who","fuck","stupid","hate","reboot","boot","stop"],
         "answers":[
             "You're welcome",
             "No need to thank me, I am just a machine",
@@ -113,8 +113,8 @@
     {
         "name":"get_state",
         "intent":"get the current state of the machine",
-        "key_words":["status","are","you","doing","do","state","ok"],
-        "secondary_words":["how","what"],
+        "key_words":["status","doing","do","state","ok","feel","feeling"],
+        "secondary_words":["how","what","you","are"],
         "excluded_words":["me","am","i","who","why","where"],
         "answers":[
             "I'm fine, Thanks. I've been running for 12 hours, my CPU is at 2% usage and my RAM is at 2MB out of 1GB",
@@ -137,7 +137,7 @@
         "name":"restart",
         "intent":"ask the machine to restart itself",
         "key_words":["start","restart","boot","reboot"],
-        "secondary_words":["yourself","do","system"],
+        "secondary_words":["yourself","do","system","now","you"],
         "excluded_words":["me","why","who","when","where","shutdown","shut","down","off"],
         "answers":[
             "Shutting down...",
