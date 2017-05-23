@@ -11,9 +11,9 @@ from threading import Thread
 
 from bs4 import BeautifulSoup
 
-"""          """
-"""web page and string formating"""
-"""          """
+"""                               """
+""" web page and string formating """
+"""                               """
 
 def soft_cut_string(string,amount):
     """cuts a string at the next dot after the amount"""
@@ -52,9 +52,9 @@ def get_rand_wiki_page():
     return {'title':title,'url':url,'text':text}
 
 
-"""          """
-"""other utils"""
-"""          """
+"""             """
+""" other utils """
+"""             """
 
 def get_json(f):
     """returns the values contained in a json file"""
@@ -72,9 +72,9 @@ def say(text):
     """says a text using festival tts"""
     execute_unix("echo \""+text+"\" | festival --tts")
 
-"""          """
-"""date utils"""
-"""          """
+"""            """
+""" date utils """
+"""            """
 
 class Alarm(Thread):
     def __init__(self,alarms,function):
