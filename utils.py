@@ -64,9 +64,9 @@ def get_json(f):
 
 def execute_unix(inputcommand):
     """executes a unix command in a proper way"""
-   p = subprocess.Popen(inputcommand, stdout=subprocess.PIPE, shell=True)
-   (output, err) = p.communicate()
-   return output
+    p = subprocess.Popen(inputcommand, stdout=subprocess.PIPE, shell=True)
+    (output, err) = p.communicate()
+    return output
 
 def say(text):
     """says a text using festival tts"""
