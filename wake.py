@@ -7,6 +7,7 @@ from utils import *
 LENGTH = 1500
 
 def wake_me_up():
+    """function to execute to wake up. reads a wikipedia article then gives usefull information"""
     startTime = get_date()
 
     """getting article"""
