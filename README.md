@@ -1,6 +1,7 @@
 # pyAlarm
 
 This is a regroupment of tests regarding a personnal assisstant.
+
 At first, it was only supposed to be an alarm, that explains the name, I guess.
 
 ## Files
@@ -28,6 +29,10 @@ this file performs live speach recognition with pocketsphinx
 ### utils.py
 
 this file contains a lot of utility functions
+
+### wake_up.json
+
+this file contains the sentences to choose from when building the wake up phrase
 
 ### wake.py
 
