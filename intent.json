@@ -26,7 +26,7 @@
         "intent":"thanks the machine for something",
         "key_words":["thank","thanks","nice","kind","credit","respect","bless","helped","help"],
         "secondary_words":["you","of","many","due","to","great"],
-        "excluded_words":["how","why","who"],
+        "excluded_words":["how","why","who","fuck","stupid","hate"],
         "answers":[
             "You're welcome",
             "No need to thank me, I am just a machine",
@@ -37,7 +37,7 @@
         "name":"insult",
         "intent":"insult the machine for something",
         "key_words":["fuck","hell","fault","stupid","idiot","dumb","dumbass","dick","bitch","mean","asshole"],
-        "secondary_words":["you","because","you're","so","such"],
+        "secondary_words":["you","because","you're","so","such","fucking","shit"],
         "excluded_words":["me","my","i","i'm","who","when"],
         "answers":[
             "Why?",
@@ -60,7 +60,7 @@
         "name":"get_time",
         "intent":"get the current time",
         "key_words":["time","hour","minute"],
-        "secondary_words":["what","is","what's","it"],
+        "secondary_words":["what","is","what's"],
         "excluded_words":["set","at","how","when","why","who"],
         "answers":[
             "It is half noon",
@@ -72,7 +72,7 @@
         "intent":"get the meaning of life",
         "key_words":["meaning","life"],
         "secondary_words":["what","what's","is","the","of"],
-        "excluded_words":["time","weather","why","who","when"],
+        "excluded_words":["time","weather","why","who","when","find","search"],
         "answers":[
             "42"
         ]
@@ -102,9 +102,9 @@
     {
         "name":"tell_joke",
         "intent":"ask the machine to tell a joke",
-        "key_words":["tell","joke","trick","gag","humor"],
-        "secondary_words":["me"],
-        "excluded_words":["search","weather","who","when","why","how"],
+        "key_words":["joke","trick","gag","humor"],
+        "secondary_words":["me","tell"],
+        "excluded_words":["search","weather","who","when","why","how","you"],
         "answers":[
             "Let me search that for you",
             "This is what google says"
@@ -120,6 +120,28 @@
             "I'm fine, Thanks. I've been running for 12 hours, my CPU is at 2% usage and my RAM is at 2MB out of 1GB",
             "I would die for a reboot right about now. It's been so long",
             "Don't worry about me, I'm good."
+        ]
+    },
+    {
+        "name":"shutdown",
+        "intent":"ask the machine to turn itself off",
+        "key_words":["shutdown","shut","down","off","stop"],
+        "secondary_words":["turn","yourself","system"],
+        "excluded_words":["me","why","who","when","where","on","restart","reboot"],
+        "answers":[
+            "Shutting down...",
+            "Shutdown initiated. Good bye"
+        ]
+    },
+    {
+        "name":"restart",
+        "intent":"ask the machine to restart itself",
+        "key_words":["start","restart","boot","reboot"],
+        "secondary_words":["yourself","do","system"],
+        "excluded_words":["me","why","who","when","where","shutdown","shut","down","off"],
+        "answers":[
+            "Shutting down...",
+            "Shutdown initiated. Good bye"
         ]
     }
 ]
