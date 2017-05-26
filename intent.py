@@ -25,14 +25,28 @@ def get_intent(phrase,intents):
 
         #index, value in iterable
         for i, intent in enumerate(intents):
-            #foreach words
-            for word in words:
-                if word in intent["key_words"]:
-                    results[i]+=KEY_WORDS_VALUE
-                elif word in intent["secondary_words"]:
-                    results[i]+=SEC_WORDS_VALUE
-                elif word in intent["excluded_words"]:
-                    results[i]+=EXC_WORDS_VALUE
+            #check the mandatory words. at least one is needed
+            #or none if no mandatory words where specified
+            hasMandatoryWord = False
+            if not intent["mandatory_words"]:
+                hasMandatoryWord = True
+            else:
+                for mand_word in intent["mandatory_words"]:
+                    if mand_word in words:
+                        hasMandatoryWord = True
+                        if DEBUG: print("found mandatory word")
+                        break
+            #for each intentions, only if we have a mandatory word
+            #do we check the score
+            if hasMandatoryWord:
+                #foreach words, add or remove from the score
+                for word in words:
+                    if word in intent["key_words"]:
+                        results[i]+=KEY_WORDS_VALUE
+                    elif word in intent["secondary_words"]:
+                        results[i]+=SEC_WORDS_VALUE
+                    elif word in intent["excluded_words"]:
+                        results[i]+=EXC_WORDS_VALUE
 
         if DEBUG: print(results)
         maxResult = max(results)
@@ -41,6 +55,7 @@ def get_intent(phrase,intents):
         if maxResult >= 2:
             highest = intents[results.index(maxResult)]
             #return the intent in letters
+            return choice(highest["answers"])
             return highest["intent"]
 
     return "Could not understand request"
@@ -50,7 +65,9 @@ def main():
 
 
     model_path = get_model_path()
-    print(model_path)
+    if DEBUG: print(model_path)
+
+    print("Ready...")
 
     speech = LiveSpeech(
         verbose=False,
@@ -61,13 +78,14 @@ def main():
         hmm=path.join(model_path, 'en-us'),
         lm=path.join(model_path, 'en-us.lm.bin'),
         dic=path.join(model_path, 'cmudict-en-us.dict'),
-        mllr=path.join(model_path,'adapt-230517-2')
+        mllr=path.join(model_path,'adapt-230517-1')
     )
 
     for phrase in speech:
         if str(phrase) == "stop":
             sys.exit(0)
         say(get_intent(str(phrase).lower(),intents))
+        print("Listening...")
 
 if __name__ == "__main__":
     main()
