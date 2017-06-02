@@ -1,11 +1,21 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-from utils import Alarm, set_alarm
+from utils import Alarm, set_alarm, get_json
+from intent import get_intent
 from wake import wake_me_up
 import sys
 
 
 def main():
+    intents = get_json("intent.json")
+    while True:
+        try:
+            phrase = input("Phrase: ")
+            print(get_intent(str(phrase).lower(),intents))
+        except KeyboardInterrupt:
+            sys.exit(0)
+
+    '''
     
     alarm_tot = [6,5]
     alarm_normal = [6,42]
@@ -28,6 +38,8 @@ def main():
     while alarm.isRunning:
         if str(input()) == 'exit':
             alarm.stop()
+            '''
+
 
 if __name__ == '__main__':
     main()

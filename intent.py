@@ -5,7 +5,10 @@ from random import choice
 
 from os import path
 import sys
-from pocketsphinx import LiveSpeech, get_model_path
+try:
+    from pocketsphinx import LiveSpeech, get_model_path
+except ImportError:
+    print("Error importing pocketsphinx")
 
 DEBUG = True
 KEY_WORDS_VALUE = 2
@@ -54,10 +57,10 @@ def get_intent(phrase,intents):
         #if smaller than two, we can't be sure of the request
         if maxResult >= 2:
             highest = intents[results.index(maxResult)]
+            if DEBUG: print(highest["intent"])
             #return the intent in letters
             if DEBUG: print(highest["intent"])
             return choice(highest["answers"])
-            #return highest["intent"]
 
     return "Please repeat"
 
