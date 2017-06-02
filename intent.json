@@ -26,7 +26,7 @@
     {
         "name":"acknowledge",
         "intent":"thanks the machine for something",
-        "mandatory_words":null,
+        "mandatory_words":["thank","thanks","nice","kind","bless","helped","help"],
         "key_words":["thank","thanks","nice","kind","credit","respect","bless","helped","help"],
         "secondary_words":["you","of","many","due","to","great"],
         "excluded_words":["how","why","who","fuck","stupid","hate","reboot","boot","stop"],
@@ -39,7 +39,7 @@
     {
         "name":"insult",
         "intent":"insult the machine for something",
-        "mandatory_words":null,
+        "mandatory_words":["you","you're"],
         "key_words":["fuck","hell","fault","stupid","idiot","dumb","dumbass","dick","bitch","mean","asshole"],
         "secondary_words":["you","because","you're","so","such","fucking","shit"],
         "excluded_words":["me","my","i","i'm","who","when"],
@@ -88,8 +88,8 @@
         "name":"research",
         "intent":"make a research",
         "mandatory_words":null,
-        "key_words":["search","research","find"],
-        "secondary_words":["for","on","internet"],
+        "key_words":["search","research","find","internet","google","information","intel"],
+        "secondary_words":["for","on","get","info"],
         "excluded_words":["me","time","weather"],
         "answers":[
             "Let me search that for you",
@@ -123,12 +123,12 @@
     {
         "name":"get_state",
         "intent":"get the current state of the machine",
-        "mandatory_words":null,
+        "mandatory_words":["are","doing","status","feel"],
         "key_words":["status","doing","do","state","ok","feel","feeling"],
         "secondary_words":["how","what","you","are"],
         "excluded_words":["me","am","i","who","why","where"],
         "answers":[
-            "I'm fine, Thanks. I've been running for 12 hours, my CPU is at 2% usage and my RAM is at 2MB out of 1GB",
+            "I'm fine, Thanks. I've been running for 12 hours, my CPU is at 2% usage and my RAM is at two megabyte out of one gigabyte",
             "I would die for a reboot right about now. It's been so long",
             "Don't worry about me, I'm good."
         ]
@@ -136,7 +136,7 @@
     {
         "name":"shutdown",
         "intent":"ask the machine to turn itself off",
-        "mandatory_words":null,
+        "mandatory_words":["shutdown","shut","down","off","stop"],
         "key_words":["shutdown","shut","down","off","stop"],
         "secondary_words":["turn","yourself","system"],
         "excluded_words":["me","why","who","when","where","on","restart","reboot"],
@@ -148,7 +148,7 @@
     {
         "name":"restart",
         "intent":"ask the machine to restart itself",
-        "mandatory_words":null,
+        "mandatory_words":["start","restart","boot","reboot"],
         "key_words":["start","restart","boot","reboot"],
         "secondary_words":["yourself","do","system","now","you"],
         "excluded_words":["me","why","who","when","where","shutdown","shut","down","off"],
