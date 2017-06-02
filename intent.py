@@ -10,21 +10,20 @@ try:
 except ImportError:
     print("Error importing pocketsphinx")
 
-DEBUG = True
 KEY_WORDS_VALUE = 2
 SEC_WORDS_VALUE = 1
 EXC_WORDS_VALUE = -3
 
-def get_intent(phrase,intents):
+def get_intent(phrase,intents,debug=False):
     """returns the most likely intention of the phrase out of the intents list"""
 
     words = phrase.split(" ")
-    if DEBUG: print(words)
+    if debug: print(words)
 
     #only do the hard part if we are going to find something
     if len(words) >= 2:
         #list for the points
-        results = [0] * len(intents)    
+        results = [0] * len(intents)
 
         #index, value in iterable
         for i, intent in enumerate(intents):
@@ -37,7 +36,7 @@ def get_intent(phrase,intents):
                 for mand_word in intent["mandatory_words"]:
                     if mand_word in words:
                         hasMandatoryWord = True
-                        if DEBUG: print("found mandatory word")
+                        if debug: print("found mandatory word")
                         break
             #for each intentions, only if we have a mandatory word
             #do we check the score
@@ -51,18 +50,18 @@ def get_intent(phrase,intents):
                     elif word in intent["excluded_words"]:
                         results[i]+=EXC_WORDS_VALUE
 
-        if DEBUG: print(results)
+        if debug: print(results)
         maxResult = max(results)
 
         #if smaller than two, we can't be sure of the request
         if maxResult >= 2:
             highest = intents[results.index(maxResult)]
-            if DEBUG: print(highest["intent"])
-            #return the intent in letters
-            if DEBUG: print(highest["intent"])
-            return choice(highest["answers"])
+            if debug: print(highest["intent"])
+            return highest
+            #return choice(highest["answers"])
 
-    return "Please repeat"
+    if debug: print("No intent found")
+    return None
 
 def main():
     intents = get_json("intent.json")
@@ -70,7 +69,6 @@ def main():
 
 
     model_path = get_model_path()
-    if DEBUG: print(model_path)
 
     print("Ready...")
 

@@ -2,14 +2,15 @@
     {
         "name":"report_weather",
         "intent":"recieve weather information",
-        "mandatory_words":["weather","temperature","conditions","rain","rainy","sun","sunny"],
-        "key_words":["weather","outside","temperature","degrees", "conditions"],
-        "secondary_words":["like","rain","rainy","sun","sunny","clouds","cloudy","today","today's","tomorrow","tomorrow's","hot","cold","outside"],
-        "excluded_words":["yesterday","who","why","where"],
+        "mandatory_words":["weather","temperature","conditions","rain","rainy","raining","sun","sunny"],
+        "key_words":["weather","outside","temperature","degrees","conditions"],
+        "secondary_words":["like","rain","rainy","raining","sun","sunny","clouds","cloudy","today","today's","tomorrow","tomorrow's","hot","cold","outside","yesterday"],
+        "excluded_words":["who","why","where"],
         "answers":[
             "Go look for yourself outside",
             "Let me check the temperature for you"
-        ]
+        ],
+        "infos":true
     },
     {
         "name":"add_agenda",
@@ -21,7 +22,8 @@
         "answers":[
             "I will add that entry to your agenda",
             "I will remind you of that"
-        ]
+        ],
+        "infos":true
     },
     {
         "name":"acknowledge",
@@ -34,7 +36,8 @@
             "You're welcome",
             "No need to thank me, I am just a machine",
             "I appriciate, I think. Wait no, I don't even think"
-        ]
+        ],
+        "infos":false
     },
     {
         "name":"insult",
@@ -47,7 +50,8 @@
             "Why?",
             "I do not understand your sudden emotions, human",
             "You need to calm down, should I play some heavy metal for you?"
-        ]
+        ],
+        "infos":false
     },
     {
         "name":"set_alarm",
@@ -59,7 +63,8 @@
         "answers":[
             "Let me set that alarm for you",
             "It will be set"
-        ]
+        ],
+        "infos":true
     },
     {
         "name":"get_time",
@@ -71,7 +76,8 @@
         "answers":[
             "It is half noon",
             "Look at your watch, human"
-        ]
+        ],
+        "infos":null
     },
     {
         "name":"get_meaning_of_life",
@@ -82,19 +88,21 @@
         "excluded_words":["time","weather","why","who","when","find","search"],
         "answers":[
             "42"
-        ]
+        ],
+        "infos":null
     },
     {
         "name":"research",
         "intent":"make a research",
         "mandatory_words":null,
-        "key_words":["search","research","find","internet","google","information","intel"],
+        "key_words":["search","research","find","internet","information","intel"],
         "secondary_words":["for","on","get","info"],
         "excluded_words":["me","time","weather"],
         "answers":[
             "Let me search that for you",
             "This is what google says"
-        ]
+        ],
+        "infos":{"search_terms":null}
     },
     {
         "name":"change_mode",
@@ -106,7 +114,8 @@
         "answers":[
             "Mode changed",
             "We are in the demanded mode"
-        ]
+        ],
+        "infos":{"new_mode":"offline"}
     },
     {
         "name":"tell_joke",
@@ -118,7 +127,8 @@
         "answers":[
             "I don't know any jokes",
             "You're too funny for me sorry"
-        ]
+        ],
+        "infos":null
     },
     {
         "name":"get_state",
@@ -131,7 +141,8 @@
             "I'm fine, Thanks. I've been running for 12 hours, my CPU is at 2% usage and my RAM is at two megabyte out of one gigabyte",
             "I would die for a reboot right about now. It's been so long",
             "Don't worry about me, I'm good."
-        ]
+        ],
+        "infos":null
     },
     {
         "name":"shutdown",
@@ -143,7 +154,8 @@
         "answers":[
             "Shutting down...",
             "Shutdown initiated. Good bye"
-        ]
+        ],
+        "infos":null
     },
     {
         "name":"restart",
@@ -155,7 +167,8 @@
         "answers":[
             "I will come back soon...",
             "Rebooting the system"
-        ]
+        ],
+        "infos":null
     },
     {
         "name":"change_volume",
@@ -167,6 +180,7 @@
         "answers":[
             "Volume changed",
             "I will adjust my speaking volume"
-        ]
+        ],
+        "infos":{"new_volume":50}
     }
 ]
