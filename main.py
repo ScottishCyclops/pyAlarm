@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
-from utils import Alarm, set_alarm, get_json
-from intent import get_intent
-from informations import get_informations
-from wake import wake_me_up
 import sys
+
+from informations import get_informations
+from intent import get_intent
+from utils import Alarm, get_json, set_alarm
+from wake import wake_me_up
 
 
 def main():
     intents = get_json("intent.json")
 
-    test_phrase_1 = "will there be sun tomorrow"
+    test_phrase_1 = "will it rain at work tomorrow"
     test_phrase_2 = "wake me up at ten a m tomorrow"
     intent1 = get_intent(test_phrase_1,intents)
     intent2 = get_intent(test_phrase_2,intents)
