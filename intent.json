@@ -139,7 +139,7 @@
         "mandatory_words":["shutdown","shut","down","off","stop"],
         "key_words":["shutdown","shut","down","off","stop"],
         "secondary_words":["turn","yourself","system"],
-        "excluded_words":["me","why","who","when","where","on","restart","reboot"],
+        "excluded_words":["me","why","who","when","where","on","restart","reboot","up"],
         "answers":[
             "Shutting down...",
             "Shutdown initiated. Good bye"
@@ -155,6 +155,18 @@
         "answers":[
             "I will come back soon...",
             "Rebooting the system"
+        ]
+    },
+    {
+        "name":"change_volume",
+        "intent":"ask the machine to change it's speaking volume",
+        "mandatory_words":["up","down","volume","louder","loud","quit","quieter"],
+        "key_words":["suht","up","volume","down","speak","louder","loud","quieter","quiet"],
+        "secondary_words":["too","you","are","speaking","minimum","maximum","default","revert","go"],
+        "excluded_words":["me","why","who","when","where","off","on"],
+        "answers":[
+            "Volume changed",
+            "I will adjust my speaking volume"
         ]
     }
 ]
