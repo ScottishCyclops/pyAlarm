@@ -15,7 +15,7 @@ def get_informations(phrase,intent,debug=False):
 
 def get_report_weather(words):
     infos = {"date":"today","time":"now","location":"current"}
-    date_cases = [
+    dateCases = [
         "monday",
         "tuesday",
         "wednesday",
@@ -27,33 +27,42 @@ def get_report_weather(words):
         "tomorrow",
         "yesterday",
     ]
-    time_cases = [
+    timeCases = [
         "now",
         "tonight",
         "morning",
         1,2,3,4,5,6,7,8,9,10,11,12,
     ]
-    location_cases = [
+    locationCases = [
         "home",
         "work",
-        "paris",
-        "berlin",
-        "london",
     ]
 
-    for date in date_cases:
+    foundDate = False
+    for date in dateCases:
         if str(date) in words:
             infos["date"] = date
+            foundDate = True
+            break
 
-    for time in time_cases:
+    foundTime = False
+    for time in timeCases:
         if str(time) in words:
             infos["time"] = time
+            foundTime = True
+            break
     
-    for location in location_cases:
+    foundLocation = False
+    for location in locationCases:
         if location in words:
             infos["location"] = location
-
-    
+            foundLocation = True
+            break
+    if not foundLocation:
+        if "in" in words:
+            infos["location"] = words[words.index("in")+1]
+        elif "at" in words:
+            infos["location"] = words[words.index("at")+1]
     
     return infos
 
