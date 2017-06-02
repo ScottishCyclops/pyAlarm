@@ -55,13 +55,15 @@ def get_intent(phrase,intents):
         if maxResult >= 2:
             highest = intents[results.index(maxResult)]
             #return the intent in letters
+            if DEBUG: print(highest["intent"])
             return choice(highest["answers"])
-            return highest["intent"]
+            #return highest["intent"]
 
-    return "Could not understand request"
+    return "Please repeat"
 
 def main():
     intents = get_json("intent.json")
+    lang = "fr"
 
 
     model_path = get_model_path()
@@ -75,17 +77,17 @@ def main():
         buffer_size=2048,
         no_search=False,
         full_utt=False,
-        hmm=path.join(model_path, 'en-us'),
-        lm=path.join(model_path, 'en-us.lm.bin'),
-        dic=path.join(model_path, 'cmudict-en-us.dict'),
-        mllr=path.join(model_path,'adapt-230517-1')
+        hmm=path.join(model_path, lang),
+        lm=path.join(model_path, '{}.lm.bin'.format(lang)),
+        dic=path.join(model_path, 'cmudict-{}.dict'.format(lang)),
+        #mllr=path.join(model_path,'adapt-3')
     )
 
     for phrase in speech:
         if str(phrase) == "stop":
             sys.exit(0)
-        say(get_intent(str(phrase).lower(),intents))
-        print("Listening...")
+        elif str(phrase) != "":
+            say(get_intent(str(phrase).lower(),intents))
 
 if __name__ == "__main__":
     main()
