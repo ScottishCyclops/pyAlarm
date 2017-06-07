@@ -38,7 +38,8 @@ this file contains the sentences to choose from when building the wake up phrase
 ### wake.py
 
 this file contains the function to execute to wake up.
-It reads a random wikipedia article out loud
+I builds a string containing useful information and a wikipedia article, and reads it out loud
 
 
-Warning: Project made for fun only!
+
+_Warning: Project made for fun only!_
