@@ -61,3 +61,4 @@ def get_intent(phrase: str, intents: iter, debug: bool = False) -> dict:
     if debug:
         print("No intent found")
     return {}
+

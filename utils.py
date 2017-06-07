@@ -297,3 +297,4 @@ def print_alarm(alarm: dict):
 
     day = get_weekday_name(alarm['weekday'])
     print("Alarm: {0} à {1:02}:{2:02}".format(day, alarm["hour"], alarm["minute"]))
+
