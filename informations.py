@@ -1,4 +1,4 @@
-def get_informations(phrase,intent,debug=False):
+def get_informations(phrase, intent, debug=False):
     if intent["infos"]:
         words = phrase.split(" ")
 
@@ -10,12 +10,13 @@ def get_informations(phrase,intent,debug=False):
         }.get(intent["name"])(words)
             
     else:
-        if debug: print("No words to seek for thie intention")
+        if debug: print("No words to seek for this intention")
         return {}
 
+
 def get_report_weather(words):
-    infos = {"date":"today","time":"now","location":"current"}
-    dateCases = [
+    infos = {"date": "today", "time": "now", "location": "current"}
+    date_cases = [
         "monday",
         "tuesday",
         "wednesday",
@@ -27,38 +28,39 @@ def get_report_weather(words):
         "tomorrow",
         "yesterday",
     ]
-    timeCases = [
+    time_cases = [
         "now",
         "tonight",
         "morning",
         1,2,3,4,5,6,7,8,9,10,11,12,
     ]
-    locationCases = [
+    location_cases = [
         "home",
         "work",
     ]
 
-    foundDate = False
-    for date in dateCases:
+    found_date = False
+    for date in date_cases:
         if str(date) in words:
             infos["date"] = date
-            foundDate = True
+            found_date = True
             break
 
-    foundTime = False
-    for time in timeCases:
+    found_time = False
+    for time in time_cases:
         if str(time) in words:
             infos["time"] = time
-            foundTime = True
+            found_time = True
             break
-    
-    foundLocation = False
-    for location in locationCases:
+
+    found_location = False
+    for location in location_cases:
         if location in words:
             infos["location"] = location
-            foundLocation = True
+            found_location = True
             break
-    if not foundLocation:
+
+    if not found_location:
         if "in" in words:
             infos["location"] = words[words.index("in")+1]
         elif "at" in words:
