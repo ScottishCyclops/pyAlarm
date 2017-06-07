@@ -1,45 +1,46 @@
-#!/usr/bin/python3
-# -*- coding: UTF-8 -*-
 import random
 
-from utils import *
+from utils import get_rand_wiki_page, get_date, remove_extra_whitespace, soft_cut_string, get_json, get_weekday_name, \
+    get_weekday_number, say
 
 LENGTH = 1500
 
-def wake_me_up():
-    """function to execute to wake up. reads a wikipedia article then gives usefull information"""
-    startTime = get_date()
 
-    """getting article"""
+def wake_me_up():
+    """function to execute to wake up. reads a wikipedia article then gives useful information"""
+
+    t = get_date()
+
+    #getting article
     page = get_rand_wiki_page()
-    while len(page['text']) < LENGTH:
-        print('too short')
+    while len(page["text"]) < LENGTH:
+        print("too short")
         page = get_rand_wiki_page()
 
-    article = page['title'] + ". " + remove_extra_whitespace(soft_cut_string(page['text'],LENGTH).replace("\n"," "))
+    article = page["title"] + ". " + remove_extra_whitespace(soft_cut_string(page["text"], LENGTH).replace("\n", " "))
 
-    """loading parameters"""
-    d = get_json('wake_up.json')
+    #loading parameters
+    d = get_json("wake_up.json")
 
-    """constantes for now"""
-    temp = '25'
-    conditions = 'sunny'
+    #constants for now
+    temp = "25"
+    conditions = "sunny"
     planning = "shopping, going to school"
-    
-    """none constante info"""
-    weekday = get_weekday_name(get_weekday_number(get_date()))
 
-    intro = random.choice(d['intro'])
-    outro = random.choice(d['outro'])
-    salute = random.choice(d['salute']).format(d['user_name'])
-    weather =  random.choice(d['weather']).format(temp,d['temp_scale'],conditions)
-    day = random.choice(d['day']).format(weekday,planning)
+    #none constant info
+    weekday = get_weekday_name(get_weekday_number(t))
 
-    text = " ".join([intro,article,outro,salute,weather,day])
+    intro = random.choice(d["intro"])
+    outro = random.choice(d["outro"])
+    salute = random.choice(d["salute"]).format(d["user_name"])
+    weather = random.choice(d["weather"]).format(temp, d["temp_scale"], conditions)
+    day = random.choice(d["day"]).format(weekday, planning)
+
+    text = " ".join([intro, article, outro, salute, weather, day])
 
     print(text)
     say(text)
 
-    endTime = get_date()
-    totalTime = endTime - startTime
-    print(totalTime)
+    end_time = get_date()
+    total_time = end_time - t
+    print(total_time)
