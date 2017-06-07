@@ -7,7 +7,9 @@ LENGTH = 1500
 
 
 def wake_me_up():
-    """function to execute to wake up. reads a wikipedia article then gives useful information"""
+    """
+    function to execute to wake up. reads a wikipedia article then gives useful information
+    """
 
     t = get_date()
 

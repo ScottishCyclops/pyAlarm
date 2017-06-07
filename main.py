@@ -16,12 +16,20 @@ def main():
     intents = get_json("intent.json")
 
     while True:
-        test_phrase_1 = input("Phrase: ")
-        intent1 = get_intent(test_phrase_1, intents, True)
-        print(get_information(test_phrase_1, intent1)) if intent1 else print("No intent")
+        try:
+            phrase = str(input("Phrase: ")).lower()
+            if phrase == "stop":
+                sys.exit(0)
+            elif phrase != "":
+                intent = get_intent(phrase, intents, True)
+                if intent:
+                    print(get_information(phrase, intent))
+        except KeyboardInterrupt:
+            sys.exit(0)
 
 
 '''
+    #old test code to clean up
 
     intents = get_json("intent.json")
     lang = "fr"
@@ -43,28 +51,18 @@ def main():
     )
 
     for phrase in speech:
-        if str(phrase) == "stop":
-            sys.exit(0)
-        elif str(phrase) != "":
-            say(get_intent(str(phrase).lower(), intents))
-
-    while True:
-        try:
-            phrase = input("Phrase: ")
-            print(get_intent(str(phrase).lower(),intents))
-        except KeyboardInterrupt:
-            sys.exit(0)
+        ah
     
-    alarm_tot = [6,5]
+    alarm_early = [6,5]
     alarm_normal = [6,42]
-    alarm_tard = [7,5]
+    alarm_late = [7,5]
     alarm_weekend = [9,30]
 
     alarms = {
         0: set_alarm(0, *alarm_normal),
         1: set_alarm(1, *alarm_normal),
-        2: set_alarm(2, *alarm_tot),
-        3: set_alarm(3, *alarm_tard),
+        2: set_alarm(2, *alarm_early),
+        3: set_alarm(3, *alarm_late),
         4: set_alarm(4, *alarm_normal),
         5: set_alarm(5, *alarm_weekend),
         6: set_alarm(6, *alarm_weekend),

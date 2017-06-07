@@ -1,6 +1,5 @@
 import datetime
 import json
-import os
 import re
 import subprocess
 import time
@@ -14,8 +13,13 @@ from bs4 import BeautifulSoup
 """                                """
 
 
-def soft_cut_string(string, amount):
-    """cuts a string at the next dot after the amount"""
+def soft_cut_string(string: str, amount: int) -> str:
+    """
+    cuts a string at the next dot after the amount
+    :param string: the string to cut
+    :param amount: after how many characters to start cutting
+    :return: the cut string
+    """
 
     if len(string) > amount:
         next_dot_index = string.find(".", amount, -1)
@@ -26,14 +30,21 @@ def soft_cut_string(string, amount):
         return string
 
 
-def remove_extra_whitespace(string):
-    """removes the multiples whitespaces in a string and returns it"""
+def remove_extra_whitespace(string: str) -> str:
+    """
+    removes the multiples whitespaces in a string and returns it
+    :param string: the string to operate on
+    :return: the string without extra whitespaces
+    """
 
     return ' '.join(string.split())
 
 
-def get_rand_wiki_page():
-    """returns a dict containing a page title, url and all the text from the paragraphs"""
+def get_rand_wiki_page() -> dict:
+    """
+    returns a dict containing a page title, url and all the text from the paragraphs
+    :return: dictionary containing the title, url and text from a random wikipedia page
+    """
 
     req_url = "http://en.wikipedia.org/wiki/Special:Random"
     page = urllib.request.urlopen(req_url)
@@ -66,28 +77,41 @@ def get_rand_wiki_page():
 """             """
 
 
-def get_json(f):
-    """returns the values contained in a json file"""
+def get_json(f: str) -> any:
+    """
+    returns the values contained in a json file
+    :param f: name of the file to open
+    :return: the content of the file as a python object
+    """
 
     with open(f) as json_data:
         d = json.load(json_data)
     return d
 
 
-def command(input_command):
-    """executes a unix command in a proper way"""
+def command(input_command: str) -> str:
+    """
+    executes a unix command in a proper way
+    :param input_command: the command to run, like in a terminal
+    :return: the output of the command, might be None
+    """
 
     p = subprocess.Popen(input_command, stdout=subprocess.PIPE, shell=True)
     (output, err) = p.communicate()
-    return output
+    return str(output)
 
 
-def say(text):
-    """says a text using festival tts"""
+def say(text: str) -> str:
+    """
+    says a text using festival tts
+    :param text: the text to say out loud
+    :return: the output of the command executed
+    """
 
-    command("echo \"" + text + "\" | festival --tts")
+    return command("echo \"" + text + "\" | festival --tts")
 
 
+#TODO: implement
 def get_word_after(phrase, words, match=None):
     """under development"""
 
@@ -113,12 +137,16 @@ def get_word_after(phrase, words, match=None):
 
 
 class Alarm(Thread):
-    def __init__(self, alarms, func):
-        """alarm class based on the Thread class that runs and rings the alarms given"""
+    def __init__(self, alarms: iter, func: any):
+        """
+        alarm class based on the Thread class that runs and rings the alarms given
+        :param alarms: the list of alarms to ring
+        :param func: the function to call when ringing an alarm
+        """
 
         super(Alarm, self).__init__()
         self.alarms = alarms
-        self.function = func
+        self.func = func
         self.isRunning = False
 
     def run(self):
@@ -128,20 +156,20 @@ class Alarm(Thread):
             while self.isRunning:
                 t1 = get_date()
                 print_date(t1)
-                '''if the alams passed and we are the day it was supposed to pass'''
+                '''if the alarm passed and we are the day it was supposed to pass'''
                 if has_alarm_passed(next_alarm) \
                         and next_alarm['weekday'] == get_weekday_number(t1):
 
                     '''run the given function to wake up'''
-                    self.function()
+                    self.func()
 
                     next_alarm = choose_next_alarm(self.alarms)
 
                 time.sleep(1)
 
-        #TODO: see what can fail
-        except Exception:
-            self.isRunning = False
+        except KeyboardInterrupt:
+            #TODO: verify what else can fail
+            self.stop()
             return
 
     def stop(self):
@@ -171,8 +199,12 @@ def print_date(t):
                                                     t.second))
 
 
-def get_weekday_name(t):
-    """returns a string from a weekday number (0-6)"""
+def get_weekday_name(d: int) -> str:
+    """
+    returns a string from a weekday number
+    :param d: day of the week (0-6)
+    :return: the day of the week as a word
+    """
 
     return {
         0: "Monday",
@@ -183,11 +215,15 @@ def get_weekday_name(t):
         5: "Saturday",
         6: "Sunday",
         7: "Invalid"
-    }.get(t, 7)
+    }.get(d, 7)
 
 
-def get_month_name(t):
-    """returns a string from a month number (1-12)"""
+def get_month_name(m: int) -> str:
+    """
+    returns a string from a month number
+    :param m: month (1-12)
+    :return: the month as a word
+    """
 
     return {
         1:  "January",
@@ -203,17 +239,27 @@ def get_month_name(t):
         11: "November",
         12: "December",
         13: "Invalid",
-    }.get(t, 13)
+    }.get(m, 13)
 
 
-def set_alarm(weekday, hour, minute):
-    """returns a dict containing the weekday (0-6) the hour and the minute of an alarm"""
+def set_alarm(weekday: int, hour: int, minute: int) -> dict:
+    """
+    returns a dict containing the weekday the hour and the minute of an alarm
+    :param weekday: day of the week (0-6)
+    :param hour: hour of the day (0-23)
+    :param minute: minute of the hour (0-59)
+    :return: a dictionary containing the given information
+    """
 
     return {"weekday": weekday, "hour": hour, "minute": minute}
 
 
-def has_alarm_passed(alarm):
-    """checks if an alarm time has passed, not if it's day has"""
+def has_alarm_passed(alarm: dict) -> bool:
+    """
+    checks if an alarm time has passed, not if it's day has
+    :param alarm: the alarm dictionary created with set_alarm
+    :return: whether the alarm's time was before the current time
+    """
 
     passed = False
     t = get_date()
@@ -225,21 +271,29 @@ def has_alarm_passed(alarm):
     return passed
 
 
-def choose_next_alarm(alarms):
-    """returns the alarm for this day of the week. if the alarm has passed, take the one from the next day"""
+def choose_next_alarm(alarms: iter) -> dict:
+    """
+    returns the alarm for this day of the week. if the alarm has passed, take the one from the next day
+    :param alarms: all the alarms created with set_alarm
+    :return: the next alarm, for this day or the next one
+    """
 
     t = get_date()
+    #get the alarm of this week's day
     next_alarm = alarms.get(get_weekday_number(t), 7)
 
     if has_alarm_passed(next_alarm):
-        #if it has already passed, get the one from tomorrow
+        #if it has already passed, get the one from the next week day, within 0-6 range
         next_alarm = alarms.get((get_weekday_number(t) + 1) % 7, 7)
 
     return next_alarm
 
 
-def print_alarm(alarm):
-    """prints the basic information of the alarm"""
+def print_alarm(alarm: dict):
+    """
+    prints the basic information of the alarm
+    :param alarm: an alarm constructed with set_alarm
+    """
 
     day = get_weekday_name(alarm['weekday'])
     print("Alarm: {0} à {1:02}:{2:02}".format(day, alarm["hour"], alarm["minute"]))

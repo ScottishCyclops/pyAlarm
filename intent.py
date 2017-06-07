@@ -4,8 +4,14 @@ EXC_WORDS_VALUE = -3
 MIN_RESULT_THRESHOLD = 2
 
 
-def get_intent(phrase, intents, debug=False):
-    """returns the most likely intention of the phrase out of the intents list"""
+def get_intent(phrase: str, intents: iter, debug: bool = False) -> dict:
+    """
+    returns the most likely intention of the phrase out of the intents list
+    :param phrase: the phrase out of which we want to determine the intent
+    :param intents: the list of intents to choose from
+    :param debug: optional switch that prints debug information if on
+    :return: a dictionary containing the intention, or an empty one if failed
+    """
 
     words = phrase.split(" ")
     if debug:
@@ -54,4 +60,4 @@ def get_intent(phrase, intents, debug=False):
 
     if debug:
         print("No intent found")
-    return None
+    return {}

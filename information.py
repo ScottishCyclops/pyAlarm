@@ -1,16 +1,25 @@
 import re
 
 
-def get_information(phrase, intent, debug=False):
+def get_information(phrase: str, intent: dict, debug: bool = False) -> dict:
+    """
+    extract meaningful information from a phrase based on an intent
+    :param phrase: the phrase to extract from
+    :param intent: the intention of the phrase returned by intent.get_intent
+    :param debug: optional switch that prints debug information if on
+    :return: a dictionary containing the gathered information, or an empty one if failed
+    """
     if intent["info"]:
         words = phrase.split(" ")
 
-        return {
+        info = {
             "report_weather": get_report_weather,
             "add_agenda":     get_add_agenda,
             "set_alarm":      get_set_alarm,
 
-        }.get(intent["name"])(words)
+        }.get(intent["name"], get_default)(words)
+
+        return info if info else {}
 
     else:
         if debug:
@@ -18,7 +27,22 @@ def get_information(phrase, intent, debug=False):
         return {}
 
 
-def get_report_weather(words):
+def get_default(param: dict) -> any:
+    """
+    default function called when an error occurred trying to call a specialized function
+    :param param: the params given to us. they have no use
+    :return: an empty dict
+    """
+    print("An error occurred while calling the specialized extraction function")
+    return None
+
+
+def get_report_weather(words: iter) -> any:
+    """
+    specialized function that extracts information for weather reports
+    :param words: list of words
+    :return: the gathered information, or None if failed
+    """
     info = {"date": "today", "time": "now", "location": "current"}
     date_cases = [
         "monday",
@@ -83,10 +107,12 @@ def get_report_weather(words):
 
 
 def get_add_agenda(words):
+    """under development"""
     info = {"date": "tomorrow", "time": "entire_day", "title": "new event"}
     return "retrieving agenda information"
 
 
 def get_set_alarm(words):
+    """under development"""
     info = {"date": "tomorrow", "hour": None, "minute": 0}
     return "retrieving alarm information"

@@ -1,186 +1,187 @@
 [
     {
-        "name":"report_weather",
-        "intent":"recieve weather information",
-        "mandatory_words":["weather","temperature","conditions","rain","rainy","cloud","cloudy","raining","sun","sunny","hot","cold"],
-        "key_words":["weather","outside","temperature","degrees","conditions"],
-        "secondary_words":["at","like","rain","rainy","raining","sun","sunny","clouds","cloudy","today","today's","tomorrow","tomorrow's","tonight","morning","hot","cold","outside","yesterday"],
-        "excluded_words":["who","why","where"],
-        "answers":[
+        "name": "report_weather",
+        "intent": "receive weather information",
+        "mandatory_words": ["weather", "temperature", "conditions", "rain", "rainy", "cloud", "cloudy", "raining", "sun", "sunny", "hot", "cold"],
+        "key_words": ["weather", "outside", "temperature", "degrees", "conditions"],
+        "secondary_words": ["at", "like", "rain", "rainy", "raining", "sun", "sunny", "clouds", "cloudy", "today", "today's", "tomorrow", "tomorrow's", "tonight", "morning", "hot", "cold", "outside", "yesterday"],
+        "excluded_words": ["who", "why", "where"],
+        "answers": [
             "Go look for yourself outside",
             "Let me check the temperature for you"
         ],
-        "info":true
+        "info": true
     },
     {
-        "name":"add_agenda",
-        "intent":"add information to the agenda",
-        "mandatory_words":["agenda","event","remind","reminds"],
-        "key_words":["agenda","event","buy","attend","party","cinema","film","anniversary", "museum", "reception", "meeting","remind","reminds"],
-        "secondary_words":["add","new","do","go","tomorrow","tomorrow's"],
-        "excluded_words":["weather","who","how","when","why"],
-        "answers":[
+        "name": "add_agenda",
+        "intent": "add information to the agenda",
+        "mandatory_words": ["agenda", "event", "remind", "reminds"],
+        "key_words": ["agenda", "event", "buy", "attend", "party", "cinema", "film", "anniversary", "museum", "reception", "meeting", "remind", "reminds"],
+        "secondary_words": ["add", "new", "do", "go", "tomorrow", "tomorrow's"],
+        "excluded_words": ["weather", "who", "how", "when", "why"],
+        "answers": [
             "I will add that entry to your agenda",
             "I will remind you of that"
         ],
-        "info":true
+        "info": true
     },
     {
-        "name":"acknowledge",
-        "intent":"thanks the machine for something",
-        "mandatory_words":["thank","thanks","nice","kind","bless","helped","help"],
-        "key_words":["thank","thanks","nice","kind","credit","respect","bless","helped","help"],
-        "secondary_words":["you","of","many","due","to","great"],
-        "excluded_words":["how","why","who","fuck","stupid","hate","reboot","boot","stop","me"],
-        "answers":[
+        "name": "acknowledge",
+        "intent": "thanks the machine for something",
+        "mandatory_words": ["thank", "thanks", "you", "you're"],
+        "key_words": ["thank", "thanks", "nice", "kind", "credit", "respect", "bless", "helped", "help", "love"],
+        "secondary_words": ["you", "of", "many", "due", "to", "great"],
+        "excluded_words": ["how", "why", "who", "fuck", "stupid", "hate", "reboot", "boot", "stop", "me"],
+        "answers": [
             "You're welcome",
             "No need to thank me, I am just a machine",
-            "I appriciate, I think. Wait no, I don't even think"
+            "I appreciate, I think. Wait no, I don't even think"
         ],
-        "info":false
+        "info": false
     },
     {
-        "name":"insult",
-        "intent":"insult the machine for something",
-        "mandatory_words":["you","you're"],
-        "key_words":["fuck","hell","fault","stupid","idiot","dumb","dumbass","dick","bitch","mean","asshole"],
-        "secondary_words":["you","because","you're","so","such","fucking","shit"],
-        "excluded_words":["me","my","i","i'm","who","when"],
-        "answers":[
+        "name": "insult",
+        "intent": "insult the machine for something",
+        "mandatory_words": ["you", "you're"],
+        "key_words": ["fuck", "hell", "fault", "stupid", "idiot", "dumb", "dumbass", "dick", "bitch", "mean", "hate", "asshole", "you"],
+        "secondary_words": ["because", "you're", "so", "such", "fucking", "shit"],
+        "excluded_words": ["me", "my", "i'm", "who", "when", "love", "thank", "thanks", "great", "kind"],
+        "answers": [
             "Why?",
             "I do not understand your sudden emotions, human",
-            "You need to calm down, should I play some heavy metal for you?"
+            "You need to calm down, should I play some heavy metal for you?",
+            "watch your language"
         ],
-        "info":false
+        "info": false
     },
     {
-        "name":"set_alarm",
-        "intent":"set the time of an alarm",
-        "mandatory_words":["alarm","wake"],
-        "key_words":["alarm","clock","wake"],
-        "secondary_words":["up","me","at","am","pm","morning","tomorrow","set"],
-        "excluded_words":["what","how","time","why","when"],
-        "answers":[
+        "name": "set_alarm",
+        "intent": "set the time of an alarm",
+        "mandatory_words": ["alarm", "wake"],
+        "key_words": ["alarm", "clock", "wake"],
+        "secondary_words": ["up", "me", "at", "am", "pm", "morning", "tomorrow", "set"],
+        "excluded_words": ["what", "how", "time", "why", "when"],
+        "answers": [
             "Let me set that alarm for you",
             "It will be set"
         ],
-        "info":true
+        "info": true
     },
     {
-        "name":"get_time",
-        "intent":"get the current time",
-        "mandatory_words":["time"],
-        "key_words":["time","hour","minute"],
-        "secondary_words":["what","is","what's"],
-        "excluded_words":["set","at","how","when","why","who"],
-        "answers":[
+        "name": "get_time",
+        "intent": "get the current time",
+        "mandatory_words": ["time"],
+        "key_words": ["time", "hour", "minute"],
+        "secondary_words": ["what", "is", "what's"],
+        "excluded_words": ["set", "at", "how", "when", "why", "who"],
+        "answers": [
             "It is half noon",
             "Look at your watch, human"
         ],
-        "info":null
+        "info": null
     },
     {
-        "name":"get_meaning_of_life",
-        "intent":"get the meaning of life",
-        "mandatory_words":["life"],
-        "key_words":["meaning","life"],
-        "secondary_words":["what","what's","is","the","of"],
-        "excluded_words":["time","weather","why","who","when","find","search"],
-        "answers":[
+        "name": "get_meaning_of_life",
+        "intent": "get the meaning of life",
+        "mandatory_words": ["life"],
+        "key_words": ["meaning", "life"],
+        "secondary_words": ["what", "what's", "is", "the", "of"],
+        "excluded_words": ["time", "weather", "why", "who", "when", "find", "search"],
+        "answers": [
             "42"
         ],
-        "info":null
+        "info": null
     },
     {
-        "name":"research",
-        "intent":"make a research",
-        "mandatory_words":null,
-        "key_words":["search","research","find","internet","information","intel"],
-        "secondary_words":["for","on","get","info"],
-        "excluded_words":["me","time","weather"],
-        "answers":[
+        "name": "search",
+        "intent": "make a search",
+        "mandatory_words": ["search", "find"],
+        "key_words": ["search", "find", "internet", "information", "intel", "web"],
+        "secondary_words": ["for", "on", "get", "info"],
+        "excluded_words": ["time", "weather"],
+        "answers": [
             "Let me search that for you",
             "This is what google says"
         ],
-        "info":{"search_terms":null}
+        "info": true
     },
     {
-        "name":"change_mode",
-        "intent":"switch the current operating mode",
-        "mandatory_words":["online","offline","private","mode"],
-        "key_words":["switch","swap","change","mode","private","offline","online"],
-        "secondary_words":["go","to","for","set","yourself"],
-        "excluded_words":["nintendo","side","search","when","who","why","how"],
-        "answers":[
+        "name": "change_mode",
+        "intent": "switch the current operating mode",
+        "mandatory_words": ["online", "offline", "private", "mode"],
+        "key_words": ["switch", "swap", "change", "mode", "private", "offline", "online"],
+        "secondary_words": ["go", "to", "for", "set", "yourself"],
+        "excluded_words": ["nintendo", "side", "search", "when", "who", "why", "how"],
+        "answers": [
             "Mode changed",
             "We are in the demanded mode"
         ],
-        "info":{"new_mode":"offline"}
+        "info": true
     },
     {
-        "name":"tell_joke",
-        "intent":"ask the machine to tell a joke",
-        "mandatory_words":["joke","laugh"],
-        "key_words":["joke","trick","gag","humor","laugh"],
-        "secondary_words":["me","tell","make"],
-        "excluded_words":["search","weather","who","when","why","how","you"],
-        "answers":[
+        "name": "tell_joke",
+        "intent": "ask the machine to tell a joke",
+        "mandatory_words": ["joke", "laugh"],
+        "key_words": ["joke", "trick", "gag", "humor", "laugh"],
+        "secondary_words": ["me", "tell", "make"],
+        "excluded_words": ["search", "weather", "who", "when", "why", "how", "you"],
+        "answers": [
             "I don't know any jokes",
             "You're too funny for me sorry"
         ],
-        "info":null
+        "info": false
     },
     {
-        "name":"get_state",
-        "intent":"get the current state of the machine",
-        "mandatory_words":["are","doing","status","feel"],
-        "key_words":["status","doing","do","state","ok","feel","feeling"],
-        "secondary_words":["how","what","you","are"],
-        "excluded_words":["me","am","i","who","why","where"],
-        "answers":[
+        "name": "get_state",
+        "intent": "get the current state of the machine",
+        "mandatory_words": ["are", "doing", "status", "feel"],
+        "key_words": ["status", "doing", "do", "state", "ok", "feel", "feeling"],
+        "secondary_words": ["how", "what", "you", "are"],
+        "excluded_words": ["me", "am", "i", "who", "why", "where"],
+        "answers": [
             "I'm fine, Thanks. I've been running for 12 hours, my CPU is at 2% usage and my RAM is at two megabyte out of one gigabyte",
             "I would die for a reboot right about now. It's been so long",
             "Don't worry about me, I'm good."
         ],
-        "info":null
+        "info": false
     },
     {
-        "name":"shutdown",
-        "intent":"ask the machine to turn itself off",
-        "mandatory_words":["shutdown","shut","down","off","stop"],
-        "key_words":["shutdown","shut","down","off","stop"],
-        "secondary_words":["turn","yourself","system"],
-        "excluded_words":["me","why","who","when","where","on","restart","reboot","up"],
-        "answers":[
+        "name": "shutdown",
+        "intent": "ask the machine to turn itself off",
+        "mandatory_words": ["shutdown", "shut", "down", "off", "stop"],
+        "key_words": ["shutdown", "shut", "down", "off", "stop"],
+        "secondary_words": ["turn", "yourself", "system"],
+        "excluded_words": ["me", "why", "who", "when", "where", "on", "restart", "reboot", "up"],
+        "answers": [
             "Shutting down...",
             "Shutdown initiated. Good bye"
         ],
-        "info":null
+        "info": false
     },
     {
-        "name":"restart",
-        "intent":"ask the machine to restart itself",
-        "mandatory_words":["start","restart","boot","reboot"],
-        "key_words":["start","restart","boot","reboot"],
-        "secondary_words":["yourself","do","system","now","you"],
-        "excluded_words":["me","why","who","when","where","shutdown","shut","down","off"],
-        "answers":[
+        "name": "restart",
+        "intent": "ask the machine to restart itself",
+        "mandatory_words": ["start", "restart", "boot", "reboot"],
+        "key_words": ["start", "restart", "boot", "reboot"],
+        "secondary_words": ["yourself", "do", "system", "now", "you"],
+        "excluded_words": ["me", "why", "who", "when", "where", "shutdown", "shut", "down", "off"],
+        "answers": [
             "I will come back soon...",
             "Rebooting the system"
         ],
-        "info":null
+        "info": false
     },
     {
-        "name":"change_volume",
-        "intent":"ask the machine to change it's speaking volume",
-        "mandatory_words":["up","down","volume","louder","loud","quit","quieter"],
-        "key_words":["suht","up","volume","down","speak","louder","loud","quieter","quiet"],
-        "secondary_words":["too","you","are","speaking","minimum","maximum","default","revert","go"],
-        "excluded_words":["me","why","who","when","where","off","on"],
-        "answers":[
+        "name": "change_volume",
+        "intent": "ask the machine to change it's speaking volume",
+        "mandatory_words": ["up", "down", "volume", "louder", "loud", "quit", "quieter"],
+        "key_words": ["shut", "up", "volume", "down", "speak", "louder", "loud", "quieter", "quiet"],
+        "secondary_words": ["too", "you", "are", "speaking", "minimum", "maximum", "default", "revert", "go"],
+        "excluded_words": ["me", "why", "who", "when", "where", "off", "on"],
+        "answers": [
             "Volume changed",
             "I will adjust my speaking volume"
         ],
-        "info":{"new_volume":50}
+        "info": true
     }
 ]
