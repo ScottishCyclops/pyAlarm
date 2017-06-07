@@ -2,9 +2,9 @@
     {
         "name":"report_weather",
         "intent":"recieve weather information",
-        "mandatory_words":["weather","temperature","conditions","rain","rainy","raining","sun","sunny","hot","cold"],
+        "mandatory_words":["weather","temperature","conditions","rain","rainy","raining","sun","sunny","hot","cold","cloudy"],
         "key_words":["weather","outside","temperature","degrees","conditions"],
-        "secondary_words":["like","rain","rainy","raining","sun","sunny","clouds","cloudy","today","today's","tomorrow","tomorrow's","tonight","morning","hot","cold","outside","yesterday"],
+        "secondary_words":["at","like","rain","rainy","raining","sun","sunny","clouds","cloudy","today","today's","tomorrow","tomorrow's","tonight","morning","hot","cold","outside","yesterday"],
         "excluded_words":["who","why","where"],
         "answers":[
             "Go look for yourself outside",
@@ -31,7 +31,7 @@
         "mandatory_words":["thank","thanks","nice","kind","bless","helped","help"],
         "key_words":["thank","thanks","nice","kind","credit","respect","bless","helped","help"],
         "secondary_words":["you","of","many","due","to","great"],
-        "excluded_words":["how","why","who","fuck","stupid","hate","reboot","boot","stop"],
+        "excluded_words":["how","why","who","fuck","stupid","hate","reboot","boot","stop","me"],
         "answers":[
             "You're welcome",
             "No need to thank me, I am just a machine",

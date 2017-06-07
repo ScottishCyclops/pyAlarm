@@ -1,3 +1,5 @@
+import re
+
 def get_informations(phrase,intent,debug=False):
     if intent["infos"]:
         words = phrase.split(" ")
@@ -58,12 +60,22 @@ def get_report_weather(words):
             infos["location"] = location
             foundLocation = True
             break
-    if not foundLocation:
-        if "in" in words:
-            infos["location"] = words[words.index("in")+1]
-        elif "at" in words:
-            infos["location"] = words[words.index("at")+1]
     
+    if not foundLocation:
+        to_find = ""
+        if "in" in words:
+            to_find = "in"
+        elif "at" in words:
+            to_find = "at"
+        
+        if to_find != "":
+            try:
+                word = words[words.index(to_find)+1]
+                #if none digit, to exlude "at 10 AM"
+                if re.match(r"\D",word):
+                    infos["location"] = word
+            except IndexError(e):
+                print("Last word was '{}'".format(to_find))
     return infos
 
 def get_add_agenda(words):

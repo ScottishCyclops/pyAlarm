@@ -45,7 +45,7 @@ def get_rand_wiki_page():
     #remove parentheses, leave whitespace instead
     text = re.sub(r"\([^)]*\)"," ",text)
     #remove non ascii, leave whitespace instead
-    text = re.sub(r'[^\x00-\x7F]+'," ", text)
+    text = re.sub(r"[^\x00-\x7F]+"," ", text)
 
     page.close()
 
@@ -71,6 +71,23 @@ def execute_unix(inputcommand):
 def say(text):
     """says a text using festival tts"""
     execute_unix("echo \""+text+"\" | festival --tts")
+
+def get_word_after(phrase,words,match=None):
+    to_find = ""
+    if "in" in words:
+        to_find = "in"
+    elif "at" in words:
+        to_find = "at"
+    
+    if to_find != "":
+        try:
+            word = words[words.index(to_find)+1]
+            #if none digit, to exlude "at 10 AM"
+            if re.match(r"\D",word):
+                infos["location"] = word
+        except IndexError(e):
+            print("Last word was '{}'".format(to_find))
+
 
 """            """
 """ date utils """

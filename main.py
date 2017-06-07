@@ -11,12 +11,10 @@ from wake import wake_me_up
 def main():
     intents = get_json("intent.json")
 
-    test_phrase_1 = "will it rain at work tomorrow"
-    test_phrase_2 = "wake me up at ten a m tomorrow"
-    intent1 = get_intent(test_phrase_1,intents)
-    intent2 = get_intent(test_phrase_2,intents)
-    print(get_informations(test_phrase_1,intent1)) if intent1 else print("No intent")
-    print(get_informations(test_phrase_2,intent2)) if intent2 else print("No intent")
+    while True:
+        test_phrase_1 = input("Phrase: ")
+        intent1 = get_intent(test_phrase_1,intents,True)
+        print(get_informations(test_phrase_1,intent1)) if intent1 else print("No intent")
     '''
     while True:
         try:
