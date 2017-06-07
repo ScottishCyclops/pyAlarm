@@ -4,13 +4,13 @@
         "intent":"recieve weather information",
         "mandatory_words":["weather","temperature","conditions","rain","rainy","cloud","cloudy","raining","sun","sunny","hot","cold"],
         "key_words":["weather","outside","temperature","degrees","conditions"],
-        "secondary_words":["like","rain","rainy","raining","sun","sunny","clouds","cloudy","today","today's","tomorrow","tomorrow's","tonight","morning","hot","cold","outside","yesterday"],
+        "secondary_words":["at","like","rain","rainy","raining","sun","sunny","clouds","cloudy","today","today's","tomorrow","tomorrow's","tonight","morning","hot","cold","outside","yesterday"],
         "excluded_words":["who","why","where"],
         "answers":[
             "Go look for yourself outside",
             "Let me check the temperature for you"
         ],
-        "infos":true
+        "info":true
     },
     {
         "name":"add_agenda",
@@ -23,7 +23,7 @@
             "I will add that entry to your agenda",
             "I will remind you of that"
         ],
-        "infos":true
+        "info":true
     },
     {
         "name":"acknowledge",
@@ -31,13 +31,13 @@
         "mandatory_words":["thank","thanks","nice","kind","bless","helped","help"],
         "key_words":["thank","thanks","nice","kind","credit","respect","bless","helped","help"],
         "secondary_words":["you","of","many","due","to","great"],
-        "excluded_words":["how","why","who","fuck","stupid","hate","reboot","boot","stop"],
+        "excluded_words":["how","why","who","fuck","stupid","hate","reboot","boot","stop","me"],
         "answers":[
             "You're welcome",
             "No need to thank me, I am just a machine",
             "I appriciate, I think. Wait no, I don't even think"
         ],
-        "infos":false
+        "info":false
     },
     {
         "name":"insult",
@@ -51,7 +51,7 @@
             "I do not understand your sudden emotions, human",
             "You need to calm down, should I play some heavy metal for you?"
         ],
-        "infos":false
+        "info":false
     },
     {
         "name":"set_alarm",
@@ -64,7 +64,7 @@
             "Let me set that alarm for you",
             "It will be set"
         ],
-        "infos":true
+        "info":true
     },
     {
         "name":"get_time",
@@ -77,7 +77,7 @@
             "It is half noon",
             "Look at your watch, human"
         ],
-        "infos":null
+        "info":null
     },
     {
         "name":"get_meaning_of_life",
@@ -89,7 +89,7 @@
         "answers":[
             "42"
         ],
-        "infos":null
+        "info":null
     },
     {
         "name":"research",
@@ -102,7 +102,7 @@
             "Let me search that for you",
             "This is what google says"
         ],
-        "infos":{"search_terms":null}
+        "info":{"search_terms":null}
     },
     {
         "name":"change_mode",
@@ -115,7 +115,7 @@
             "Mode changed",
             "We are in the demanded mode"
         ],
-        "infos":{"new_mode":"offline"}
+        "info":{"new_mode":"offline"}
     },
     {
         "name":"tell_joke",
@@ -128,7 +128,7 @@
             "I don't know any jokes",
             "You're too funny for me sorry"
         ],
-        "infos":null
+        "info":null
     },
     {
         "name":"get_state",
@@ -142,7 +142,7 @@
             "I would die for a reboot right about now. It's been so long",
             "Don't worry about me, I'm good."
         ],
-        "infos":null
+        "info":null
     },
     {
         "name":"shutdown",
@@ -155,7 +155,7 @@
             "Shutting down...",
             "Shutdown initiated. Good bye"
         ],
-        "infos":null
+        "info":null
     },
     {
         "name":"restart",
@@ -168,7 +168,7 @@
             "I will come back soon...",
             "Rebooting the system"
         ],
-        "infos":null
+        "info":null
     },
     {
         "name":"change_volume",
@@ -181,6 +181,6 @@
             "Volume changed",
             "I will adjust my speaking volume"
         ],
-        "infos":{"new_volume":50}
+        "info":{"new_volume":50}
     }
 ]

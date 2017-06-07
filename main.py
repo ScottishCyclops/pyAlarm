@@ -1,30 +1,59 @@
+from os import path
 import sys
 
-from informations import get_informations
+try:
+    from pocketsphinx import LiveSpeech, get_model_path
+except ImportError:
+    print("Error importing pocketsphinx")
+
+from information import get_information
 from intent import get_intent
-from utils import Alarm, get_json, set_alarm
+from utils import Alarm, get_json, set_alarm, say
 from wake import wake_me_up
 
 
 def main():
     intents = get_json("intent.json")
 
-    test_phrase_1 = "was it cloudy yesterday in boecourt"
-    test_phrase_2 = "wake me up at ten a m tomorrow"
-    intent1 = get_intent(test_phrase_1,intents, True)
-    intent2 = get_intent(test_phrase_2,intents)
-    print(get_informations(test_phrase_1,intent1)) if intent1 else print("No intent")
-    #print(get_informations(test_phrase_2,intent2)) if intent2 else print("No intent")
-    '''
+    while True:
+        test_phrase_1 = input("Phrase: ")
+        intent1 = get_intent(test_phrase_1, intents, True)
+        print(get_information(test_phrase_1, intent1)) if intent1 else print("No intent")
+
+
+'''
+
+    intents = get_json("intent.json")
+    lang = "fr"
+
+    model_path = get_model_path()
+
+    print("Ready...")
+
+    speech = LiveSpeech(
+            verbose=False,
+            sampling_rate=16000,
+            buffer_size=2048,
+            no_search=False,
+            full_utt=False,
+            hmm=path.join(model_path, lang),
+            lm=path.join(model_path, '{}.lm.bin'.format(lang)),
+            dic=path.join(model_path, 'cmudict-{}.dict'.format(lang)),
+            #mllr=path.join(model_path,'adapt-3')
+    )
+
+    for phrase in speech:
+        if str(phrase) == "stop":
+            sys.exit(0)
+        elif str(phrase) != "":
+            say(get_intent(str(phrase).lower(), intents))
+
     while True:
         try:
             phrase = input("Phrase: ")
             print(get_intent(str(phrase).lower(),intents))
         except KeyboardInterrupt:
             sys.exit(0)
-    '''
-
-    '''
     
     alarm_tot = [6,5]
     alarm_normal = [6,42]
@@ -47,8 +76,7 @@ def main():
     while alarm.isRunning:
         if str(input()) == 'exit':
             alarm.stop()
-            '''
+'''
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

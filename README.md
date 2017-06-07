@@ -1,6 +1,6 @@
 # pyAlarm
 
-This is a regroupment of tests regarding a personnal assisstant.
+This is a regroupement of tests regarding a personal assistant.
 
 At first, it was only supposed to be an alarm, that explains the name, I guess.
 
@@ -8,27 +8,28 @@ At first, it was only supposed to be an alarm, that explains the name, I guess.
 
 ### test/tts-test.py
 
-this files is used to test multiple text to speach engines at once
+this files is used to test multiple text to speech engines at once
+
+### information.py
+
+this file contains a function that extracts useful information from a phrase, based on an intention
 
 ### intent.json
 
-this file contains all the intents to be recognized
+this file contains all the intentions that can be recognized by intent.py
 
 ### intent.py
 
-this file contains the function that defines an intent from a string
+this file contains a function that fines an intent based on a phrase
 
 ### main.py
 
-this file is the entry point for the alarm program. it creates the alarm and runs it
-
-### pocket.py
-
-this file performs live speach recognition with pocketsphinx
+this file is the entry point of the program.
+It is mostly used for testing purposes as of right now
 
 ### utils.py
 
-this file contains a lot of utility functions
+this file contains a lot of utility functions for the others files
 
 ### wake_up.json
 
@@ -36,12 +37,8 @@ this file contains the sentences to choose from when building the wake up phrase
 
 ### wake.py
 
-this file contains the function to execute to wake up
+this file contains the function to execute to wake up.
+It reads a random wikipedia article out loud
 
 
-## Reference links
-
-http://stackoverflow.com/questions/34624277/python-3-artificial-intelligence-offline-stt-and-tts
-
-
-Project made for fun only
+Warning: Project made for fun only!
