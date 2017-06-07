@@ -2,7 +2,7 @@
     {
         "name":"report_weather",
         "intent":"recieve weather information",
-        "mandatory_words":["weather","temperature","conditions","rain","rainy","raining","sun","sunny","hot","cold"],
+        "mandatory_words":["weather","temperature","conditions","rain","rainy","cloud","cloudy","raining","sun","sunny","hot","cold"],
         "key_words":["weather","outside","temperature","degrees","conditions"],
         "secondary_words":["like","rain","rainy","raining","sun","sunny","clouds","cloudy","today","today's","tomorrow","tomorrow's","tonight","morning","hot","cold","outside","yesterday"],
         "excluded_words":["who","why","where"],
